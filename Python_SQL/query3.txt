@@ -1,0 +1,13 @@
+SELECT
+    times.station_id,
+    station.name AS station_name,
+    times.slot,
+    times.time
+FROM
+    times
+JOIN
+    station ON times.station_id = station.id
+WHERE
+    times.slot = 1
+ORDER BY
+    times.station_id, times.time;

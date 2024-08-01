@@ -1,0 +1,12 @@
+SELECT
+    r.id AS route_id,
+    r.name,
+    SUM(rp.distance) AS total_distance
+FROM
+    routes r
+JOIN
+    route_points rp ON r.id = rp.route_id
+GROUP BY
+    r.id, r.name
+ORDER BY
+    total_distance DESC;
