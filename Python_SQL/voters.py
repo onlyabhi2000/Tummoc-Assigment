@@ -1,3 +1,5 @@
+
+# Voters  assignment
 def vote(name, candidates_votes):
     if name in candidates_votes:
         candidates_votes[name] += 1
