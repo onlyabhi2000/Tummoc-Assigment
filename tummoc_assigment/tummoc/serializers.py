@@ -1,21 +1,16 @@
 from rest_framework import serializers
-from .models import Teacher, Student
+from .models import MovieCollection, Movie
 
 
-class TeacherSerializer(serializers.ModelSerializer):
+class MovieSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Teacher
-        fields = '__all__'
+        model = Movie
+        fields = ['title', 'description', 'genres', 'uuid']
 
 
-class StudentSerializer(serializers.ModelSerializer):
+class CollectionSerializer(serializers.ModelSerializer):
+    movies = MovieSerializer(many=True, read_only=True)
+
     class Meta:
-        model = Student
-        fields = '__all__'
-
-
-class DistanceSerializer(serializers.Serializer):
-    latitude1 = serializers.FloatField()
-    longitude1 = serializers.FloatField()
-    latitude2 = serializers.FloatField()
-    longitude2 = serializers.FloatField()
+        model = MovieCollection
+        fields = ['title', 'description', 'uuid', 'movies']
